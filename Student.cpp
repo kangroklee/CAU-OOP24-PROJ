@@ -40,3 +40,12 @@ string Student::getDepartment() const {
 string Student::getTel() const {
     return tel;
 }
+
+//searching(황병윤)
+void Student::display() const {
+    std::cout << getName() << " "
+              << getId() << " "
+              << getDepartment() << " "
+              << getBirthYear() << " "
+              << getTel() << std::endl;
+}
