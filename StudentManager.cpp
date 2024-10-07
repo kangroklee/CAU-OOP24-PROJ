@@ -139,4 +139,115 @@ void StudentManager::displayMenu() {
     }
 }
 
+//searching(황병윤)
 StudentManager::~StudentManager() {};
+
+void StudentManager::displaySearchMenu() {
+    std::cout << "- Search -" << std::endl;
+    std::cout << "1. Search by name" << std::endl;
+    std::cout << "2. Search by student ID (10 digits)" << std::endl;
+    std::cout << "3. Search by admission year (4 digits)" << std::endl;
+    std::cout << "4. Search by birth year (4 digits)" << std::endl;
+    std::cout << "5. Search by department name" << std::endl;
+    std::cout << "6. List All" << std::endl;
+    std::cout << "> ";
+}
+
+
+void StudentManager::searchByName(const std::string& name) {
+    bool found = false;
+    Student* current = student_list;  // Assuming student_list is the head pointer of the linked list
+    
+    while (current != nullptr) {
+        if (current->getName() == name) {
+            current->display();
+            found = true;
+            break;  // If you want to stop after finding the first match
+        }
+        current++;  // Assuming there is a method to get the next student in the list
+    }
+
+    if (!found) {
+        std::cout << "No student found with name: " << name << std::endl;
+    }
+}
+
+
+void StudentManager::searchByStudentID(const std::string& id) {
+    int idcopy = std::stoi(id);
+    bool found = false;
+    Student* current = student_list;
+
+    while (current != nullptr) {
+        if (current->getId() == idcopy) {
+            current->display();
+            found = true;
+            break;
+        }
+        current++;  // Assuming you have a method or pointer to the next student in the list
+    }
+
+    if (!found) {
+        std::cout << "No student found with ID: " << id << std::endl;
+    }
+}
+
+
+void StudentManager::searchByAdmissionYear(const std::string& year) {
+    bool found = false;
+    Student* current = student_list;
+
+    for (int i = 0; i < STUDENT_LIST_SIZE; ++i) {
+        std::stringstream ss;
+        ss << current->getId();
+        std::string idStr = ss.str();
+        std::string idFirstFour = idStr.substr(0, 4);
+
+        if (idFirstFour == year) {
+            current->display();
+            found = true;
+        }
+        current++;
+    }
+
+    if (!found) {
+        std::cout << "No student found admitted in year: " << year << std::endl;
+    }
+}
+
+
+void StudentManager::searchByBirthYear(const std::string& year) {
+    int yearcopy = std::stoi(year);
+    bool found = false;
+
+    for (int i = 0; i < STUDENT_LIST_SIZE; ++i) {
+        if (student_list[i].getBirthYear() == yearcopy) {
+            student_list[i].display();
+            found = true;
+        }
+    }
+
+    if (!found) {
+        std::cout << "No student found born in year: " << year << std::endl;
+    }
+}
+
+void StudentManager::searchByDepartment(const std::string& department) {
+    bool found = false;
+
+    for (int i = 0; i < STUDENT_LIST_SIZE; ++i) {
+        if (student_list[i].getDepartment().find(department) != std::string::npos) {
+            student_list[i].display();
+            found = true;
+        }
+    }
+
+    if (!found) {
+        std::cout << "No student found in department: " << department << std::endl;
+    }
+}
+
+
+void StudentManager::listAll(){
+    std::cout << "not made yet";
+}
