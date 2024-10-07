@@ -12,12 +12,23 @@ private:
     Student* student_list;
     string filepath;
 
+
 public:
     StudentManager(string filepath);
     void addStudent();
     void printAll();
     void displayMenu();
     ~StudentManager();
+    //searching(황병윤)
+    void displaySearchMenu();
+
+    void searchByName(const std::string& name);
+    void searchByStudentID(const std::string& id);
+    void searchByAdmissionYear(const std::string& year);
+    void searchByBirthYear(const std::string& year);
+    void searchByDepartment(const std::string& department);
+    void listAll();  
 };
 
+#endif
 #endif
