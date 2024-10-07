@@ -17,6 +17,13 @@ public:
     void addStudent();
     void printAll();
     void displayMenu();
+    void displaySortingMenu();
+
+    void sortById();
+    void sortByName();
+    void sortByBirthYear();
+    void sortByDepartment();
+
     ~StudentManager();
 };
 
