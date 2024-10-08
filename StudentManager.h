@@ -12,7 +12,6 @@ private:
     Student* student_list;
     string filepath;
 
-
 public:
     StudentManager(string filepath);
     void addStudent();
@@ -22,7 +21,7 @@ public:
     void displaySortingMenu();
   
     void searchByName(const string& name);
-    void searchByStudentID(const string& id);
+    bool searchByStudentID(const string& id);
     void searchByAdmissionYear(const string& year);
     void searchByBirthYear(const string& year);
     void searchByDepartment(const string& department);

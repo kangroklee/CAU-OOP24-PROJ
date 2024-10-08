@@ -70,6 +70,10 @@ void StudentManager::addStudent() {
         cin >> id;
         if (to_string(id).length() != 10) 
             cerr << "ID must be 10 digits";
+        if (searchByStudentID(to_string(id))) { // 이미 해당 학번의 학생이 존재할 경우
+            cerr << "Error: already inserted.";
+            return;
+        }
         else 
             break;
     }
@@ -284,7 +288,7 @@ void StudentManager::searchByName(const string& name) {
 }
 
 
-void StudentManager::searchByStudentID(const string& id) {
+bool StudentManager::searchByStudentID(const string& id) {
     int idcopy = stoi(id);
     bool found = false;
     Student* current = student_list;
@@ -301,6 +305,7 @@ void StudentManager::searchByStudentID(const string& id) {
     if (!found) {
         cout << "No student found with ID: " << id << endl;
     }
+    return found;
 }
 
 
