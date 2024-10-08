@@ -18,16 +18,13 @@ public:
     void addStudent();
     void printAll();
     void displayMenu();
-    ~StudentManager();
-    //searching(황병윤)
     void displaySearchMenu();
-
-    void searchByName(const std::string& name);
-    void searchByStudentID(const std::string& id);
-    void searchByAdmissionYear(const std::string& year);
-    void searchByBirthYear(const std::string& year);
-    void searchByDepartment(const std::string& department);
-    void listAll();  
+    void searchByName(const string& name);
+    void searchByStudentID(const string& id);
+    void searchByAdmissionYear(const string& year);
+    void searchByBirthYear(const string& year);
+    void searchByDepartment(const string& department);
+    ~StudentManager();
 };
 
 #endif

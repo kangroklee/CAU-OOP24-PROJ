@@ -198,7 +198,7 @@ void StudentManager::displaySearchMenu() {
 
 void StudentManager::searchByName(const string& name) {
     bool found = false;
-    Student* current = student_list;  // Assuming student_list is the head pointer of the linked list
+    Student* current = student_list;
     
     while (current != nullptr) {
         if (current->getName() == name) {
@@ -206,7 +206,7 @@ void StudentManager::searchByName(const string& name) {
             found = true;
             break;  // If you want to stop after finding the first match
         }
-        current++;  // Assuming there is a method to get the next student in the list
+        current++;
     }
 
     if (!found) {
@@ -226,7 +226,7 @@ void StudentManager::searchByStudentID(const string& id) {
             found = true;
             break;
         }
-        current++;  // Assuming you have a method or pointer to the next student in the list
+        current++;
     }
 
     if (!found) {
