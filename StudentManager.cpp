@@ -134,7 +134,7 @@ void StudentManager::displayMenu() {
                 addStudent();
                 break;
             case '2':
-                cout << "Search function not implemented yet." << endl;
+                displaySearchMenu();
                 break;
             case '3':
                 displaySortingMenu();
@@ -211,6 +211,151 @@ void StudentManager::sortByDepartment() {
     });
     cout << "Sorted by Department." << endl;
     printAll();
+}
+
+
+void StudentManager::displaySearchMenu() {
+    while (true) {
+        int choice;
+        string input;
+        cout << "- Search -" << endl;
+        cout << "1. Search by name" << endl;
+        cout << "2. Search by student ID (10 digits)" << endl;
+        cout << "3. Search by admission year (4 digits)" << endl;
+        cout << "4. Search by birth year (4 digits)" << endl;
+        cout << "5. Search by department name" << endl;
+        cout << "6. List All" << endl;
+        cout << "> ";
+        
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter student name: ";
+                cin >> input;
+                searchByName(input);  // Call StudentManager's searchByName
+                break;
+            case 2:
+                cout << "Enter student ID: ";
+                cin >> input;
+                searchByStudentID(input);  // Call StudentManager's searchByStudentID
+                break;
+            case 3:
+                cout << "Enter admission year: ";
+                cin >> input;
+                searchByAdmissionYear(input);  // Call StudentManager's searchByAdmissionYear
+                break;
+            case 4:
+                cout << "Enter birth year: ";
+                cin >> input;
+                searchByBirthYear(input);  // Call StudentManager's searchByBirthYear
+                break;
+            case 5:
+                cout << "Department name keyword? ";
+                cin >> input;
+                searchByDepartment(input);  // Call StudentManager's searchByDepartment
+                break;
+            case 6:
+                printAll();  
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+        }
+    }
+}
+
+
+void StudentManager::searchByName(const string& name) {
+    bool found = false;
+    Student* current = student_list;
+    
+    while (current != nullptr) {
+        if (current->getName() == name) {
+            current->print();
+            found = true;
+            break;  // If you want to stop after finding the first match
+        }
+        current++;
+    }
+
+    if (!found) {
+        cout << "No student found with name: " << name << endl;
+    }
+}
+
+
+void StudentManager::searchByStudentID(const string& id) {
+    int idcopy = stoi(id);
+    bool found = false;
+    Student* current = student_list;
+
+    while (current != nullptr) {
+        if (current->getId() == idcopy) {
+            current->print();
+            found = true;
+            break;
+        }
+        current++;
+    }
+
+    if (!found) {
+        cout << "No student found with ID: " << id << endl;
+    }
+}
+
+
+void StudentManager::searchByAdmissionYear(const string& year) {
+    bool found = false;
+    Student* current = student_list;
+
+    for (int i = 0; i < STUDENT_LIST_SIZE; ++i) {
+        stringstream ss;
+        ss << current->getId();
+        string idStr = ss.str();
+        string idFirstFour = idStr.substr(0, 4);
+
+        if (idFirstFour == year) {
+            current->print();
+            found = true;
+        }
+        current++;
+    }
+
+    if (!found) {
+        cout << "No student found admitted in year: " << year << endl;
+    }
+}
+
+
+void StudentManager::searchByBirthYear(const string& year) {
+    int yearcopy = stoi(year);
+    bool found = false;
+
+    for (int i = 0; i < STUDENT_LIST_SIZE; ++i) {
+        if (student_list[i].getBirthYear() == yearcopy) {
+            student_list[i].print();
+            found = true;
+        }
+    }
+
+    if (!found) {
+        cout << "No student found born in year: " << year << endl;
+    }
+}
+
+void StudentManager::searchByDepartment(const string& department) {
+    bool found = false;
+
+    for (int i = 0; i < STUDENT_LIST_SIZE; ++i) {
+        if (student_list[i].getDepartment().find(department) != string::npos) {
+            student_list[i].print();
+            found = true;
+        }
+    }
+
+    if (!found) {
+        cout << "No student found in department: " << department << endl;
+    }
 }
 
 StudentManager::~StudentManager() {

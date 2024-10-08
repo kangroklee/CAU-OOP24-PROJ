@@ -29,6 +29,9 @@ public:
     //setters 생략
 
     ~Student() {}
+
+    //searching(황병윤)
+    void display() const;
 };
 
 #endif
