@@ -51,7 +51,7 @@ StudentManager::StudentManager(string filepath) :student_count(0) {
 
 void StudentManager::addStudent() {
     string name;
-    int id;
+    string id;
     int birth_year;
     string department;
     string tel;
@@ -68,14 +68,15 @@ void StudentManager::addStudent() {
     while(true) {
         cout << "Student ID: ";
         cin >> id;
-        if (to_string(id).length() != 10) 
+        if (id.length() != 10) {
             cerr << "ID must be 10 digits";
-        if (searchByStudentID(to_string(id))) { // 이미 해당 학번의 학생이 존재할 경우
+            continue;
+        }
+        if (searchByStudentID(id)) { // 이미 해당 학번의 학생이 존재할 경우
             cerr << "Error: already inserted.";
             return;
         }
-        else 
-            break;
+        break;
     }
 
     while(true) {
@@ -107,7 +108,7 @@ void StudentManager::addStudent() {
         return;
     }
 
-    Student s = Student(name, id, birth_year, department, tel);
+    Student s = Student(name, stoi(id), birth_year, department, tel);
     repo << s.toString();
     repo.close();
     student_list[student_count] = s;
@@ -242,7 +243,8 @@ void StudentManager::displaySearchMenu() {
             case 2:
                 cout << "Enter student ID: ";
                 cin >> input;
-                searchByStudentID(input);  // Call StudentManager's searchByStudentID
+                if (!searchByStudentID(input)) 
+                    cout << "No student found with ID: " << input << endl;
                 break;
             case 3:
                 cout << "Enter admission year: ";
@@ -293,18 +295,17 @@ bool StudentManager::searchByStudentID(const string& id) {
     bool found = false;
     Student* current = student_list;
 
-    while (current != nullptr) {
-        if (current->getId() == idcopy) {
-            current->print();
+    for (int i=0; i<student_count; i++) {
+        if(student_list[i].getId() == idcopy) {
+            student_list[i].print();
             found = true;
             break;
         }
-        current++;
     }
 
-    if (!found) {
-        cout << "No student found with ID: " << id << endl;
-    }
+    // if (!found) {
+    //     cout << "No student found with ID: " << id << endl;
+    // }
     return found;
 }
 
