@@ -12,8 +12,7 @@ int main(int argc, char* argv[]) {
     string filepath = argv[1];
     StudentManager sm = StudentManager(filepath);
 
-    sm.printAll();
-    sm.addStudent();
-    sm.printAll();
+    sm.displayMenu();
+    
     return 0;
 }
