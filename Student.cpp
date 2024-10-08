@@ -10,11 +10,11 @@ Student::Student(const string& name, const int id, const int birth_year, const s
     : name(name), id(id), birth_year(birth_year), department(department), tel(tel) { }
 
 void Student::print() const {
-    cout<< "Name: " << name << " ";
-    cout<< "Student ID: " << id << " ";
-    cout<< "Birth Year: " << birth_year <<" ";
-    cout<< "Dept: " << department <<" ";
-    cout<< "Tel: " << tel <<endl;
+    cout<< name << " " 
+        << id << " "
+        << birth_year << " "
+        << department << " "
+        << tel << " " << endl;
 }
 
 string Student::toString() const {
@@ -41,11 +41,3 @@ string Student::getTel() const {
     return tel;
 }
 
-//searching(황병윤)
-void Student::display() const {
-    std::cout << getName() << " "
-              << getId() << " "
-              << getDepartment() << " "
-              << getBirthYear() << " "
-              << getTel() << std::endl;
-}

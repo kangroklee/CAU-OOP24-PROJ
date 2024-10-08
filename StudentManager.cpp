@@ -187,7 +187,7 @@ void StudentManager::displaySearchMenu() {
                 searchByDepartment(input);  // Call StudentManager's searchByDepartment
                 break;
             case 6:
-                listAll();  // Call StudentManager's listAll
+                printAll();  
                 break;
             default:
                 cout << "Invalid choice. Please try again." << endl;
@@ -222,7 +222,7 @@ void StudentManager::searchByStudentID(const string& id) {
 
     while (current != nullptr) {
         if (current->getId() == idcopy) {
-            current->display();
+            current->print();
             found = true;
             break;
         }
@@ -246,7 +246,7 @@ void StudentManager::searchByAdmissionYear(const string& year) {
         string idFirstFour = idStr.substr(0, 4);
 
         if (idFirstFour == year) {
-            current->display();
+            current->print();
             found = true;
         }
         current++;
@@ -264,7 +264,7 @@ void StudentManager::searchByBirthYear(const string& year) {
 
     for (int i = 0; i < STUDENT_LIST_SIZE; ++i) {
         if (student_list[i].getBirthYear() == yearcopy) {
-            student_list[i].display();
+            student_list[i].print();
             found = true;
         }
     }
@@ -279,7 +279,7 @@ void StudentManager::searchByDepartment(const string& department) {
 
     for (int i = 0; i < STUDENT_LIST_SIZE; ++i) {
         if (student_list[i].getDepartment().find(department) != string::npos) {
-            student_list[i].display();
+            student_list[i].print();
             found = true;
         }
     }
@@ -289,7 +289,3 @@ void StudentManager::searchByDepartment(const string& department) {
     }
 }
 
-
-void StudentManager::listAll(){
-    cout << "not made yet";
-}
