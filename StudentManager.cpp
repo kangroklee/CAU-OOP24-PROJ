@@ -230,6 +230,7 @@ void StudentManager::displaySearchMenu() {
         cout << "4. Search by birth year (4 digits)" << endl;
         cout << "5. Search by department name" << endl;
         cout << "6. List All" << endl;
+        cout << "7. Previous menu" << endl;
         cout << "> ";
         
         cin >> choice;
@@ -264,6 +265,9 @@ void StudentManager::displaySearchMenu() {
             case 6:
                 printAll();  
                 break;
+            case 7: 
+                cout << "Returning to main menu." << endl;
+                return;
             default:
                 cout << "Invalid choice. Please try again." << endl;
         }
