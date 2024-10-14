@@ -155,35 +155,40 @@ void StudentManager::displayMenu() {
 }
 
 void StudentManager::displaySortingMenu() {
-    cout << "\n- Sorting Options" << endl;
-    cout << "1. Sort by Name" << endl;
-    cout << "2. Sort by Student ID" << endl;
-    cout << "3. Sort by Birth Year" << endl;
-    cout << "4. Sort by Department name" << endl;
-    cout << "> ";
+    while(true) {
+        cout << "\n- Sorting Options - " << endl;
+        cout << "1. Sort by Name" << endl;
+        cout << "2. Sort by Student ID" << endl;
+        cout << "3. Sort by Birth Year" << endl;
+        cout << "4. Sort by Department name" << endl;
+        cout << "5. Previous Menu" << endl;
+        cout << "> ";
 
-    char choice;
-    cin >> choice;
-    cin.ignore();
+        char choice;
+        cin >> choice;
+        cin.ignore();
 
-    switch (choice) {
-        case '1':
-            sortByName();
-            break;
-        case '2':
-            sortById();
-            break;
-        case '3':
-            sortByBirthYear();
-            break;
-        case '4':
-            sortByDepartment();
-            break;
-        default:
-            cout << "Invalid option. Returning to main menu." << endl;
-            return;
+        switch (choice) {
+            case '1':
+                sortByName();
+                break;
+            case '2':
+                sortById();
+                break;
+            case '3':
+                sortByBirthYear();
+                break;
+            case '4':
+                sortByDepartment();
+                break;
+            case '5':
+                cout << "Returning to main menu." << endl;
+                return;
+            default:
+                cout << "Invalid option. Returning to main menu." << endl;
+                return;
+        }
     }
-    cout << "Sorting complete. Returning to main menu." << endl;
 }
 
 void StudentManager::sortById() {
