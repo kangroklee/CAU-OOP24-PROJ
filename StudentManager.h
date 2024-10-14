@@ -15,22 +15,22 @@ private:
 public:
     StudentManager(string filepath);
     void addStudent();
-    void printAll();
+    void printAll() const;
     void displayMenu();
-    void displaySearchMenu();
-    void displaySortingMenu();
+    void displaySearchMenu() const;
+    void displaySortingMenu() const;
   
-    bool isExistingId(const string& id);
-    void searchByName(const string& name);
-    void searchByStudentID(const string& id);
-    void searchByAdmissionYear(const string& year);
-    void searchByBirthYear(const string& year);
-    void searchByDepartment(const string& department);
+    bool isExistingId(const string& id) const;
+    void searchByName(const string& name) const;
+    void searchByStudentID(const string& id) const;
+    void searchByAdmissionYear(const string& year) const;
+    void searchByBirthYear(const string& year) const;
+    void searchByDepartment(const string& department) const;
 
-    void sortById();
-    void sortByName();
-    void sortByBirthYear();
-    void sortByDepartment();
+    void sortById() const;
+    void sortByName() const;
+    void sortByBirthYear() const;
+    void sortByDepartment() const;
 
     ~StudentManager();
 };

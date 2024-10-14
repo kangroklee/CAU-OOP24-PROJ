@@ -116,7 +116,7 @@ void StudentManager::addStudent() {
     cout << "Successfully added new student." << endl;
 }
 
-void StudentManager::printAll() {
+void StudentManager::printAll() const {
     for(int i=0; i<student_count; i++) {
         student_list[i].print();
     }
@@ -154,7 +154,7 @@ void StudentManager::displayMenu() {
     }
 }
 
-void StudentManager::displaySortingMenu() {
+void StudentManager::displaySortingMenu() const {
     while(true) {
         cout << "\n- Sorting Options - " << endl;
         cout << "1. Sort by Name" << endl;
@@ -191,7 +191,7 @@ void StudentManager::displaySortingMenu() {
     }
 }
 
-void StudentManager::sortById() {
+void StudentManager::sortById() const {
     sort(student_list, student_list + student_count, [](const Student& a, const Student& b) {
         return a.getId() < b.getId();
     });
@@ -199,7 +199,7 @@ void StudentManager::sortById() {
     printAll();
 }
 
-void StudentManager::sortByName() {
+void StudentManager::sortByName() const {
     sort(student_list, student_list + student_count, [](const Student& a, const Student& b) {
         return a.getName() < b.getName();
     });
@@ -207,7 +207,7 @@ void StudentManager::sortByName() {
     printAll();
 }
 
-void StudentManager::sortByBirthYear() {
+void StudentManager::sortByBirthYear() const {
     sort(student_list, student_list + student_count, [](const Student& a, const Student& b) {
         return a.getBirthYear() < b.getBirthYear();
     });
@@ -215,7 +215,7 @@ void StudentManager::sortByBirthYear() {
     printAll();
 }
 
-void StudentManager::sortByDepartment() {
+void StudentManager::sortByDepartment() const {
     sort(student_list, student_list + student_count, [](const Student& a, const Student& b) {
         return a.getDepartment() < b.getDepartment();
     });
@@ -224,7 +224,7 @@ void StudentManager::sortByDepartment() {
 }
 
 
-void StudentManager::displaySearchMenu() {
+void StudentManager::displaySearchMenu() const {
     while (true) {
         int choice;
         string input;
@@ -279,7 +279,7 @@ void StudentManager::displaySearchMenu() {
 }
 
 
-void StudentManager::searchByName(const string& name) {
+void StudentManager::searchByName(const string& name) const {
     bool found = false;
     Student* current = student_list;
     
@@ -298,7 +298,7 @@ void StudentManager::searchByName(const string& name) {
 }
 
 
-void StudentManager::searchByStudentID(const string& id) {
+void StudentManager::searchByStudentID(const string& id) const {
     int idcopy = stoi(id);
     bool found = false;
 
@@ -316,7 +316,7 @@ void StudentManager::searchByStudentID(const string& id) {
 }
 
 
-void StudentManager::searchByAdmissionYear(const string& year) {
+void StudentManager::searchByAdmissionYear(const string& year) const {
     bool found = false;
     Student* current = student_list;
 
@@ -339,7 +339,7 @@ void StudentManager::searchByAdmissionYear(const string& year) {
 }
 
 
-void StudentManager::searchByBirthYear(const string& year) {
+void StudentManager::searchByBirthYear(const string& year) const {
     int yearcopy = stoi(year);
     bool found = false;
 
@@ -355,7 +355,7 @@ void StudentManager::searchByBirthYear(const string& year) {
     }
 }
 
-void StudentManager::searchByDepartment(const string& department) {
+void StudentManager::searchByDepartment(const string& department) const {
     bool found = false;
 
     for (int i = 0; i < student_count; ++i) {
@@ -370,7 +370,7 @@ void StudentManager::searchByDepartment(const string& department) {
     }
 }
 
-bool StudentManager::isExistingId(const string& id) {
+bool StudentManager::isExistingId(const string& id) const {
     int idcopy = stoi(id);
     bool found = false;
 
