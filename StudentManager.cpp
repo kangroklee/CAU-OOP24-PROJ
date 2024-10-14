@@ -301,7 +301,6 @@ void StudentManager::searchByName(const string& name) {
 void StudentManager::searchByStudentID(const string& id) {
     int idcopy = stoi(id);
     bool found = false;
-    Student* current = student_list;
 
     for (int i=0; i<student_count; i++) {
         if(student_list[i].getId() == idcopy) {
@@ -321,7 +320,7 @@ void StudentManager::searchByAdmissionYear(const string& year) {
     bool found = false;
     Student* current = student_list;
 
-    for (int i = 0; i < STUDENT_LIST_SIZE; ++i) {
+    for (int i = 0; i < student_count; ++i) {
         stringstream ss;
         ss << current->getId();
         string idStr = ss.str();
@@ -344,7 +343,7 @@ void StudentManager::searchByBirthYear(const string& year) {
     int yearcopy = stoi(year);
     bool found = false;
 
-    for (int i = 0; i < STUDENT_LIST_SIZE; ++i) {
+    for (int i = 0; i < student_count; ++i) {
         if (student_list[i].getBirthYear() == yearcopy) {
             student_list[i].print();
             found = true;
@@ -359,7 +358,7 @@ void StudentManager::searchByBirthYear(const string& year) {
 void StudentManager::searchByDepartment(const string& department) {
     bool found = false;
 
-    for (int i = 0; i < STUDENT_LIST_SIZE; ++i) {
+    for (int i = 0; i < student_count; ++i) {
         if (student_list[i].getDepartment().find(department) != string::npos) {
             student_list[i].print();
             found = true;
@@ -374,7 +373,6 @@ void StudentManager::searchByDepartment(const string& department) {
 bool StudentManager::isExistingId(const string& id) {
     int idcopy = stoi(id);
     bool found = false;
-    Student* current = student_list;
 
     for (int i=0; i<student_count; i++) {
         if(student_list[i].getId() == idcopy) {
