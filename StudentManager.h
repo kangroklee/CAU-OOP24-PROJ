@@ -20,8 +20,9 @@ public:
     void displaySearchMenu();
     void displaySortingMenu();
   
+    bool isExistingId(const string& id);
     void searchByName(const string& name);
-    bool searchByStudentID(const string& id);
+    void searchByStudentID(const string& id);
     void searchByAdmissionYear(const string& year);
     void searchByBirthYear(const string& year);
     void searchByDepartment(const string& department);

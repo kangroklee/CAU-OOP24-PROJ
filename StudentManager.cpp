@@ -72,7 +72,7 @@ void StudentManager::addStudent() {
             cerr << "ID must be 10 digits";
             continue;
         }
-        if (searchByStudentID(id)) { // 이미 해당 학번의 학생이 존재할 경우
+        if (isExistingId(id)) { // 이미 해당 학번의 학생이 존재할 경우
             cerr << "Error: already inserted.";
             return;
         }
@@ -244,8 +244,7 @@ void StudentManager::displaySearchMenu() {
             case 2:
                 cout << "Enter student ID: ";
                 cin >> input;
-                if (!searchByStudentID(input)) 
-                    cout << "No student found with ID: " << input << endl;
+                searchByStudentID(input);
                 break;
             case 3:
                 cout << "Enter admission year: ";
@@ -294,7 +293,7 @@ void StudentManager::searchByName(const string& name) {
 }
 
 
-bool StudentManager::searchByStudentID(const string& id) {
+void StudentManager::searchByStudentID(const string& id) {
     int idcopy = stoi(id);
     bool found = false;
     Student* current = student_list;
@@ -307,10 +306,9 @@ bool StudentManager::searchByStudentID(const string& id) {
         }
     }
 
-    // if (!found) {
-    //     cout << "No student found with ID: " << id << endl;
-    // }
-    return found;
+    if (!found) {
+        cout << "No student found with ID: " << id << endl;
+    }
 }
 
 
@@ -366,6 +364,20 @@ void StudentManager::searchByDepartment(const string& department) {
     if (!found) {
         cout << "No student found in department: " << department << endl;
     }
+}
+
+bool StudentManager::isExistingId(const string& id) {
+    int idcopy = stoi(id);
+    bool found = false;
+    Student* current = student_list;
+
+    for (int i=0; i<student_count; i++) {
+        if(student_list[i].getId() == idcopy) {
+            found = true;
+            break;
+        }
+    }
+    return found;
 }
 
 StudentManager::~StudentManager() {
