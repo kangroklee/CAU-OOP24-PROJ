@@ -267,7 +267,7 @@ void StudentManager::displaySearchMenu() const {
                 searchByDepartment(input);  // Call StudentManager's searchByDepartment
                 break;
             case 6:
-                printAll();  
+                sortByName(); 
                 break;
             case 7: 
                 cout << "Returning to main menu." << endl;
