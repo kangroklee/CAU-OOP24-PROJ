@@ -7,8 +7,11 @@ This was done as a group project for CAU 2024-2nd semester OOP class.
 
 # Quickstart
 ## Windows 
-
-
+Requirements: mingw-w64-ucrt-x86_64-toolchain (includes g++, make)
+```
+$ make
+$ ./s.exe test.txt
+```
 ## macOS
 ```sh
 $ make
@@ -37,4 +40,12 @@ Apple clang version 15.0.0 (clang-1500.3.9.4)
 Target: arm64-apple-darwin23.5.0
 --
 GNU Make 3.81
+```
+```
+MINGW64_NT-10.0-19045
+--
+g++.exe (Rev3, Built by MSYS2 project) 13.2.0
+--
+GNU Make 4.4.1
+Built for x86_64-pc-msys
 ```
